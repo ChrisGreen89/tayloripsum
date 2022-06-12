@@ -1,14 +1,29 @@
 const lyrics = require('../resources/lyrics.json')
 interface ITaylorIpsumGenerator {
-    generate() : string
+    generate(paragraphs: number, length: number) : string
 }
 
 class TaylorIpsumGenerator implements ITaylorIpsumGenerator {
-    generate(paragraphs: number = 3, length = ParagraphLength.Normal): string {
+    generate(paragraphs: number = 3, length: number = 1): string {
+        let lengthObj = {} as any
+        console.log(paragraphs)
+        console.log(length)
+        switch (Number(length)) {
+            case 0:
+                lengthObj = ParagraphLength.Short
+                break;
+            case 2: 
+                lengthObj = ParagraphLength.Long
+                break;
+            default:
+                lengthObj = ParagraphLength.Normal
+                break;
+        }
+        console.log(lengthObj)
         console.log(`Generating ${paragraphs} Queen Taylor paragraphs`)
         let string = ''
         for (var i = 0; i < paragraphs; i++) {
-            const sentenceCount = getRandomInt(ParagraphLength.Normal.MinSentences, length.MaxSentences)
+            const sentenceCount = getRandomInt(lengthObj.MinSentences, lengthObj.MaxSentences)
             const sentenceLength = getRandomInt(2,5);
             console.log(`Generating paragraph ${i+1} with ${sentenceCount} sentences`)
             

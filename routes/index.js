@@ -9,7 +9,11 @@ var router = express.Router();
 
 router.get('/generate', function(req, res, next) {
   let generator = new TaylorIpsumGenerator()
-  return res.send(generator.generate())
+  let length = req.query.length
+  let paragraphs = req.query.paragraphs
+  console.log(`Length: ${length}`)
+  console.log(`Paragraphs: ${paragraphs}`)
+  return res.send(generator.generate(paragraphs, length))
 })
 
 module.exports = router;

@@ -28,20 +28,20 @@
                                     </div>
                                     <div class="my-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0">
-                                            <label class="form-check-label fw-bold" for="exampleRadios1">
+                                            <input class="form-check-input" type="radio" name="lengthRadio" id="lengthRadio1" value="0">
+                                            <label class="form-check-label fw-bold" for="lengthRadio1">
                                             Short
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1" checked>
-                                            <label class="form-check-label" for="exampleRadios2">
+                                            <input class="form-check-input" type="radio" name="lengthRadio" id="lengthRadio2" value="1" checked>
+                                            <label class="form-check-label" for="lengthRadio2">
                                             Normal
                                             </label>
                                         </div>
                                         <div class="form-check  form-check-inline">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="2">
-                                            <label class="form-check-label" for="exampleRadios3">
+                                            <input class="form-check-input" type="radio" name="lengthRadio" id="lengthRadio3" value="2">
+                                            <label class="form-check-label" for="lengthRadio3">
                                             Long
                                             </label>
                                         </div>
@@ -82,12 +82,16 @@
             
         })
         $("#generateBtn").click(() => {
-            
+            var length = $("input:radio[name ='lengthRadio']:checked").val();
+            var paragraphs = $("#numberOfParagraphs").val()
+            if (isNaN(paragraphs)) {
+                paragraphs = 3
+            }
             $("#ipsumContent").empty()
             $("#ipsumContentRaw").empty()
             $("#ipsumContent").show()
             $("#copyToClipboard").show()
-            var text = fetch('/generate').then(res => {
+            var text = fetch(`/generate?paragraphs=${paragraphs}&length=${length}`).then(res => {
                 res.text().then(data => {
                     $("#ipsumContentRaw").append(data)
                     var paragraphs = data.split('\n\n')
