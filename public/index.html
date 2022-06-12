@@ -45,9 +45,9 @@
                 <h1 id="heading" class="neonText">Taylor Ipsum</h1>
             </div>
             <div class="container" style="z-index:10">
-                <div class="row" style="height:300px;">
-                    <div class="col-4">
-                        <div class="card h-100" style="background-color:rgba(148,225,234,0.7)">
+                <div class="row">
+                    <div class="col-12 col-md-4 align-items-end d-flex">
+                        <div class="card w-100" style="background-color:rgba(148,225,234,0.7)">
                             <div class="card-body fw-bold">
                                     <div class="form-group">
                                     <label for="numberOfParagraphs">Number of paragraphs</label>
@@ -76,12 +76,13 @@
                                       <div class="mt-4">
                                     <button class="btn fw-bold" style="background-color: #fdcdcd;color:black;" id="generateBtn">Generate</button>
                                     <button class="btn fw-bold" style="background-color: #fdcdcd;color:black;display:none" id="copyToClipboard" >Copy to Clipboard</button>
+                                    <button class="btn fw-bold" style="background-color: #fdcdcd;color:black;display:none" id="clear" >Clear</button>
                                 </div>
                            </div>
                         </div>
                     </div>  
                     <div class="col-8">
-                        <div class="form-control" id="ipsumContent" style="display: none;background-color:rgba(148,225,234,0.7); overflow-y: auto; max-height: 300px"></div>
+                        <div class="form-control" id="ipsumContent" style="display: none;background-color:rgba(148,225,234,0.7);"></div>
                         <div id="ipsumContentRaw" style="display:none"/>
                     </div>
                 </div>
@@ -108,7 +109,15 @@
             $("#copiedToast").toast('show')
             
         })
+        $("#clear").click(() => {
+            $("#ipsumContent").fadeOut()
+            $("#copyToClipboard").fadeOut()
+            
+            $("#ipsumContent").empty()
+            $("#ipsumContentRaw").empty()
+        })
         $("#generateBtn").click(() => {
+            $("#ipsumContent").hide()
             var length = $("input:radio[name ='lengthRadio']:checked").val();
             var paragraphs = $("#numberOfParagraphs").val()
             if (isNaN(paragraphs)) {
@@ -116,10 +125,12 @@
             }
             $("#ipsumContent").empty()
             $("#ipsumContentRaw").empty()
-            $("#ipsumContent").show()
-            $("#copyToClipboard").show()
+
             var text = fetch(`/generate?paragraphs=${paragraphs}&length=${length}`).then(res => {
                 res.text().then(data => {
+                    $("#ipsumContent").fadeIn()
+            $("#copyToClipboard").fadeIn()
+            $("#clear").fadeIn()
                     $("#ipsumContentRaw").append(data)
                     var paragraphs = data.split('\n\n')
                     for (var i = 0; i < paragraphs.length; i++) {
