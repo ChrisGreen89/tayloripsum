@@ -12,13 +12,40 @@
                         background-position: center;
                         background-repeat: no-repeat;
         }
+        @font-face {
+  font-family: Soulmate;
+  src: url('/fonts/Soulmate.ttf');
+}
+
+#heading {
+    font-family: Soulmate;
+    font-size: 10vw;
+    color: #fdcdcd;
+    transform: rotate(-10deg);
+}
+
+.neonText {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #fdcdcd,
+    0 0 82px #fdcdcd,
+    0 0 92px #fdcdcd,
+    0 0 102px #fdcdcd,
+    0 0 151px #fdcdcd;
+}
     </style>
 </head>
 <body>
     <div id="landing" class="h-100">
         <div class="d-flex h-100 flex-column align-items-center justify-content-end pb-3">
-            <div class="container">
-                <div class="row">
+            <div class="d-flex h-100 flex-column align-items-center justify-content-center" style="position: absolute;z-index:5;">
+                <h1 id="heading" class="neonText">Taylor Ipsum</h1>
+            </div>
+            <div class="container" style="z-index:10">
+                <div class="row" style="height:300px;">
                     <div class="col-4">
                         <div class="card h-100" style="background-color:rgba(148,225,234,0.7)">
                             <div class="card-body fw-bold">
@@ -47,8 +74,8 @@
                                         </div>
                                       </div>
                                       <div class="mt-4">
-                                    <button class="btn fw-bold" style="background-color: #DEC0FC;color:black;" id="generateBtn">Generate</button>
-                                    <button class="btn fw-bold" style="background-color: #DEC0FC;color:black;display:none" id="copyToClipboard" >Copy to Clipboard</button>
+                                    <button class="btn fw-bold" style="background-color: #fdcdcd;color:black;" id="generateBtn">Generate</button>
+                                    <button class="btn fw-bold" style="background-color: #fdcdcd;color:black;display:none" id="copyToClipboard" >Copy to Clipboard</button>
                                 </div>
                            </div>
                         </div>
