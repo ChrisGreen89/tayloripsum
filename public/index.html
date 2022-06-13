@@ -6,6 +6,10 @@
     <title>Taylor Ipsum</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body {
+    font-family: 'Open Sans'
+}
         #landing {
             background-image: url('images/MX5215-taylor-swift.jpg');
                         background-size: cover;
@@ -37,10 +41,16 @@
     0 0 151px #fdcdcd;
 }
     </style>
+    <meta property="og:title" content="Taylor Ipsum">
+    <meta property="og:site_name" content="Taylor Ipsum">
+    <meta property="og:url" content="https://tayloripsum.azurewebsites.net">
+    <meta property="og:description" content="A Lorem Ipsum generator using lyrics from my favorite Taylor Swift songs. Long live Queen Taylor.">
+    <meta property="og:type" content="">
+    <meta property="og:image" content="https://tayloripsum.azurewebsites.net/images/tayloripsum.jpg">
 </head>
 <body>
-    <div id="landing" class="h-100">
-        <div class="d-flex h-100 flex-column align-items-center justify-content-end pb-3">
+    <div id="landing" class="h-100" style="overflow-y:auto">
+        <div class="d-flex min-vh-100 flex-column align-items-center justify-content-end pb-3">
             <div class="d-flex h-100 flex-column align-items-center justify-content-center" style="position: absolute;z-index:5;">
                 <h1 id="heading" class="neonText">Taylor Ipsum</h1>
             </div>
@@ -81,8 +91,8 @@
                            </div>
                         </div>
                     </div>  
-                    <div class="col-8">
-                        <div class="form-control" id="ipsumContent" style="display: none;background-color:rgba(148,225,234,0.7);"></div>
+                    <div class="col-12 col-md-8 mt-3">
+                        <div class="form-control" id="ipsumContent" style="display: none;overflow-y:auto;background-color:rgba(148,225,234,0.7);"></div>
                         <div id="ipsumContentRaw" style="display:none"/>
                     </div>
                 </div>

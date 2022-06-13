@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/bcff697c-4e27-4d47-bad7-5702380b2618/microsoft.web/sites/subscriptions/bcff697c-4e27-4d47-bad7-5702380b2618/resourceGroups/chrisgreendev/providers/Microsoft.Web/sites/tayloripsum",
+    "appService.deploySubpath": "."
+}
